@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>موقع الكروت المجانية</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container" id="main-container">
+        <h1>مرحبا بك في موقع الكروت المجانية</h1>
+        <button class="login" onclick="showLogin()">تسجيل الدخول</button>
+        <button class="signup" onclick="showSignup()">إنشاء حساب</button>
+    </div>
+    <div class="container" id="signup-container" style="display: none;">
+        <span class="back-arrow" onclick="goBack('main-container')">←</span>
+        <h1>إنشاء حساب</h1>
+        <input type="text" id="name" placeholder="أدخل اسمك">
+        <p id="name-error" class="error-message" style="display: none;">يجب إضافة اسمك</p>
+        <p id="name-length-error" class="error-message" style="display: none;">يجب ألا يقل الأسم عن 6 أحرف</p>
+        <button class="next" onclick="goToEmail()">تم</button>
+    </div>
+    <div class="container" id="email-container" style="display: none;">
+        <span class="back-arrow" onclick="goBack('signup-container')">←</span>
+        <h1>إنشاء حساب</h1>
+        <p class="info-message">يرجى إضافة البريد الإلكتروني بشكل صحيح لتستطيع الدخول لحسابك في حال نسيت كلمة المرور</p>
+        <input type="email" id="email" placeholder="أدخل بريدك الإلكتروني">
+        <p id="email-error-gmail" class="error-message" style="display: none;">يجب أضافة @gmail.com</p>
+        <p id="email-error-lang" class="error-message" style="display: none;">يجب كتابة البريد الإلكتروني باللغة الإنجليزية</p>
+        <p id="email-already-exists-error" class="error-message" style="display: none; color: red;">لقد قمت بالتسجيل بهذا البريد الإلكتروني من قبل يرجى إدخال بريد إلكتروني أخر</p>
+        <button class="next" onclick="goToPassword()">تم</button>
+    </div>
+    <div class="container" id="password-container" style="display: none;">
+        <span class="back-arrow" onclick="goBack('email-container')">←</span>
+        <h1>إنشاء حساب</h1>
+        <div class="password-container">
+            <input type="password" id="password" placeholder="أدخل كلمة المرور" onpaste="return false;">
+            <span id="toggle-password" class="toggle-password">👁️</span>
+        </div>
+        <div class="password-container">
+            <input type="password" id="confirm-password" placeholder="أدخل تأكيد كلمة المرور" onpaste="return false;">
+            <span id="toggle-confirm-password" class="toggle-password">👁️</span>
+        </div>
+        <p id="password-error" class="error-message" style="display: none;">يجب ألا تكون كلمة المرور أقل من 10 أحرف</p>
+        <p id="confirm-password-error" class="error-message" style="display: none;">كلمة المرور وتأكيد كلمة المرور غير متطابقين</p>
+        <button class="submit" onclick="submitSignup()">تم</button>
+    </div>
+    <div class="container" id="login-container" style="display: none;">
+        <span class="back-arrow" onclick="goBack('main-container')">←</span>
+        <h1>تسجيل الدخول</h1>
+        <input type="email" id="login-email" placeholder="أدخل بريدك الإلكتروني">
+        <input type="password" id="login-password" placeholder="أدخل كلمة المرور" onpaste="return false;">
+        <p id="login-error-message" class="error-message" style="display: none;">يرجى التحقق من البريد الإلكتروني وكلمة المرور</p>
+        <button class="submit" onclick="submitLogin()">تسجيل الدخول</button>
+        <button class="forgot-password" onclick="showForgotPassword()">نسيت كلمة المرور؟</button>
+    </div>
+    <div class="container" id="forgot-password-container" style="display: none;">
+        <span class="back-arrow" onclick="goBack('login-container')">←</span>
+        <h1>استعادة كلمة المرور</h1>
+        <p class="info-message">أدخل البريد الإلكتروني لاستلام رابط إعادة تعيين كلمة المرور.</p>
+        <input type="email" id="forgot-email" placeholder="أدخل بريدك الإلكتروني">
+        <p id="forgot-email-error" class="error-message" style="display: none;">يرجى إدخال بريد إلكتروني صحيح</p>
+        <button class="submit" onclick="sendResetLink()">إرسال رابط إعادة تعيين</button>
+    </div>
+    <div class="container" id="welcome-container" style="display: none;">
+        <h1 id="welcome-message"></h1>
+        <button class="vodafone">Vodafone</button>
+        <button class="etisalat">Etisalat</button>
+        <button class="orange">Orange</button>
+        <button class="we">We</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+  </html>
